@@ -1,0 +1,50 @@
+﻿@model UGE.Models.DataStructure.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hint)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionDisplay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionDisplay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Choice.ChoiceDisplay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Choice.ChoiceDisplay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MCQ.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MCQ.Title)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.QuestionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

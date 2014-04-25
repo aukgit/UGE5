@@ -12,6 +12,7 @@ namespace UGE.Models.DataStructure
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class Article
     {
@@ -42,6 +43,8 @@ namespace UGE.Models.DataStructure
         public short Width { get; set; }
         public Nullable<byte> AvgRating { get; set; }
         public string VideoLink { get; set; }
+        [Required]
+        public bool IsCommentsEnabled { get; set; }
     
         public virtual ICollection<Article> Article1 { get; set; }
         public virtual Article Article2 { get; set; }

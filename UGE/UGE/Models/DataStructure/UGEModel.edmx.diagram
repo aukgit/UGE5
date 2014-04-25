@@ -5,33 +5,33 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="337a707271024f9e8ee290aa6b094c92" Name="Diagram1">
-        <EntityTypeShape EntityType="UGEModel.AdvertiseEntry" Width="1.5" PointX="17.25" PointY="4" />
+        <EntityTypeShape EntityType="UGEModel.AdvertiseEntry" Width="1.5" PointX="12.75" PointY="4.5" />
         <EntityTypeShape EntityType="UGEModel.Article" Width="1.5" PointX="7.5" PointY="14.375" />
-        <EntityTypeShape EntityType="UGEModel.ArticleMistake" Width="1.5" PointX="9.75" PointY="19.75" />
-        <EntityTypeShape EntityType="UGEModel.Book" Width="1.5" PointX="3" PointY="16.125" />
-        <EntityTypeShape EntityType="UGEModel.Bookmark" Width="1.5" PointX="12.75" PointY="12.25" />
+        <EntityTypeShape EntityType="UGEModel.ArticleMistake" Width="1.5" PointX="9.75" PointY="34.75" />
+        <EntityTypeShape EntityType="UGEModel.Book" Width="1.5" PointX="3" PointY="16.25" />
+        <EntityTypeShape EntityType="UGEModel.Bookmark" Width="1.5" PointX="12.75" PointY="16.25" />
         <EntityTypeShape EntityType="UGEModel.Chapter" Width="1.5" PointX="5.25" PointY="16" />
-        <EntityTypeShape EntityType="UGEModel.Choice" Width="1.5" PointX="17.25" PointY="38" />
-        <EntityTypeShape EntityType="UGEModel.Comment" Width="1.5" PointX="9.75" PointY="11.875" />
-        <EntityTypeShape EntityType="UGEModel.Link" Width="1.5" PointX="19.5" PointY="5.25" />
-        <EntityTypeShape EntityType="UGEModel.LinksToDisplay" Width="1.5" PointX="14.75" PointY="20.25" />
-        <EntityTypeShape EntityType="UGEModel.MCQ" Width="1.5" PointX="9.75" PointY="34.5" />
-        <EntityTypeShape EntityType="UGEModel.MistakeQuestion" Width="1.5" PointX="17.25" PointY="34.625" />
-        <EntityTypeShape EntityType="UGEModel.Payment" Width="1.5" PointX="15" PointY="1.875" />
-        <EntityTypeShape EntityType="UGEModel.PaymentMethod" Width="1.5" PointX="12.75" PointY="2.375" />
-        <EntityTypeShape EntityType="UGEModel.Person" Width="1.5" PointX="0.75" PointY="2.125" />
-        <EntityTypeShape EntityType="UGEModel.Question" Width="1.5" PointX="15" PointY="34.5" />
-        <EntityTypeShape EntityType="UGEModel.RateMCQ" Width="1.5" PointX="12" PointY="34.625" />
-        <EntityTypeShape EntityType="UGEModel.Rating" Width="1.5" PointX="12.75" PointY="15.875" />
-        <EntityTypeShape EntityType="UGEModel.ReplyAgainstMistake" Width="1.5" PointX="12" PointY="19.5" />
-        <EntityTypeShape EntityType="UGEModel.Student" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="UGEModel.Choice" Width="1.5" PointX="17.25" PointY="22.625" />
+        <EntityTypeShape EntityType="UGEModel.Comment" Width="1.5" PointX="15.75" PointY="14.875" />
+        <EntityTypeShape EntityType="UGEModel.Link" Width="1.5" PointX="15" PointY="5.75" />
+        <EntityTypeShape EntityType="UGEModel.LinksToDisplay" Width="1.5" PointX="12.75" PointY="13.25" />
+        <EntityTypeShape EntityType="UGEModel.MCQ" Width="1.5" PointX="9.75" PointY="19.125" />
+        <EntityTypeShape EntityType="UGEModel.MistakeQuestion" Width="1.5" PointX="17.25" PointY="19.25" />
+        <EntityTypeShape EntityType="UGEModel.Payment" Width="1.5" PointX="3" PointY="1.875" />
+        <EntityTypeShape EntityType="UGEModel.PaymentMethod" Width="1.5" PointX="0.75" PointY="2.375" />
+        <EntityTypeShape EntityType="UGEModel.Person" Width="1.5" PointX="5.75" PointY="2.125" />
+        <EntityTypeShape EntityType="UGEModel.Question" Width="1.5" PointX="15" PointY="19.125" />
+        <EntityTypeShape EntityType="UGEModel.RateMCQ" Width="1.5" PointX="12" PointY="19.25" />
+        <EntityTypeShape EntityType="UGEModel.Rating" Width="1.5" PointX="9.75" PointY="12.875" />
+        <EntityTypeShape EntityType="UGEModel.ReplyAgainstMistake" Width="1.5" PointX="12" PointY="34.5" />
+        <EntityTypeShape EntityType="UGEModel.Student" Width="1.5" PointX="8" PointY="1" />
         <EntityTypeShape EntityType="UGEModel.Subject" Width="1.5" PointX="0.75" PointY="16.375" />
-        <EntityTypeShape EntityType="UGEModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" />
-        <EntityTypeShape EntityType="UGEModel.Teacher" Width="1.5" PointX="3" PointY="3.625" />
-        <EntityTypeShape EntityType="UGEModel.User" Width="1.5" PointX="10.5" PointY="6" />
-        <EntityTypeShape EntityType="UGEModel.UserRole" Width="1.5" PointX="8.25" PointY="7.375" />
-        <EntityTypeShape EntityType="UGEModel.WatchedReference" Width="1.5" PointX="9.75" PointY="31.75" />
-        <EntityTypeShape EntityType="UGEModel.WishList" Width="1.5" PointX="9.75" PointY="16" />
+        <EntityTypeShape EntityType="UGEModel.sysdiagram" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="UGEModel.Teacher" Width="1.5" PointX="8" PointY="3.625" />
+        <EntityTypeShape EntityType="UGEModel.User" Width="1.5" PointX="10.5" PointY="7" />
+        <EntityTypeShape EntityType="UGEModel.UserRole" Width="1.5" PointX="8.25" PointY="8.375" />
+        <EntityTypeShape EntityType="UGEModel.WatchedReference" Width="1.5" PointX="9.75" PointY="16.375" />
+        <EntityTypeShape EntityType="UGEModel.WishList" Width="1.5" PointX="12.75" PointY="10" />
         <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_Payment" />
         <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_User" />
         <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_User1" />

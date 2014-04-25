@@ -24,7 +24,7 @@ namespace UGE.Models.DataStructure
         [DisplayName("Subject")]
         public byte SubjectID { get; set; }
         public string BookName { get; set; }
-        public string NewField { get; set; }
+        //public string NewField { get; set; }
     
         public virtual Subject Subject { get; set; }
         public virtual ICollection<Chapter> Chapters { get; set; }

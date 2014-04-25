@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<UGE.Models.DataStructure.Subject>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Subject";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -24,8 +24,7 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.SubjectID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SubjectID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.SubjectID })
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubjectID }, new {  onclick="return confirm('Are you sure?')" })
         </td>
     </tr>
 }

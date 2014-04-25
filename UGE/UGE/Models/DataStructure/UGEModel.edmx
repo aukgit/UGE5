@@ -38,6 +38,7 @@
           <Property Name="Width" Type="smallint" Nullable="false" />
           <Property Name="AvgRating" Type="tinyint" />
           <Property Name="VideoLink" Type="varchar" MaxLength="800" />
+          <Property Name="IsCommentsEnabled" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ArticleMistake">
           <Key>
@@ -55,7 +56,6 @@
           <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SubjectID" Type="tinyint" Nullable="false" />
           <Property Name="BookName" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="NewField" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Bookmark">
           <Key>
@@ -1142,6 +1142,7 @@
           <NavigationProperty Name="WatchedReferences" Relationship="UGEModel.FK_WatchedReference_Article" FromRole="Article" ToRole="WatchedReference" />
           <NavigationProperty Name="WatchedReferences1" Relationship="UGEModel.FK_WatchedReference_Article1" FromRole="Article" ToRole="WatchedReference" />
           <NavigationProperty Name="WishLists" Relationship="UGEModel.FK_WishList_Article" FromRole="Article" ToRole="WishList" />
+          <Property Name="IsCommentsEnabled" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="ArticleMistake">
           <Key>
@@ -1161,7 +1162,6 @@
           <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SubjectID" Type="Byte" Nullable="false" />
           <Property Name="BookName" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="false" />
-          <Property Name="NewField" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Subject" Relationship="UGEModel.FK_Chapter_Subject" FromRole="Book" ToRole="Subject" />
           <NavigationProperty Name="Chapters" Relationship="UGEModel.FK_Topic_Chapter" FromRole="Book" ToRole="Chapter" />
         </EntityType>
@@ -1887,7 +1887,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1915,6 +1915,7 @@
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="UGEModel.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="IsCommentsEnabled" ColumnName="IsCommentsEnabled" />
                 <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
                 <ScalarProperty Name="AvgRating" ColumnName="AvgRating" />
                 <ScalarProperty Name="Width" ColumnName="Width" />
@@ -1942,7 +1943,6 @@
           <EntitySetMapping Name="Books">
             <EntityTypeMapping TypeName="UGEModel.Book">
               <MappingFragment StoreEntitySet="Book">
-                <ScalarProperty Name="NewField" ColumnName="NewField" />
                 <ScalarProperty Name="BookName" ColumnName="BookName" />
                 <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
                 <ScalarProperty Name="BookID" ColumnName="BookID" />

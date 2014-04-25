@@ -13,15 +13,13 @@ namespace UGE.Areas.Admin.Controllers
 {
     public class SubjectsController : Controller
     {
-        private UGEContext db = new UGEContext();
+        private readonly UGEContext db = new UGEContext();
 
-        // GET: Admin/Subjects
         public async Task<ActionResult> Index()
         {
             return View(await db.Subjects.ToListAsync());
         }
 
-        // GET: Admin/Subjects/Details/5
         public async Task<ActionResult> Details(byte? id)
         {
             if (id == null)
@@ -36,18 +34,15 @@ namespace UGE.Areas.Admin.Controllers
             return View(subject);
         }
 
-        // GET: Admin/Subjects/Create
+        
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Subjects/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "SubjectID,SubjectName")] Subject subject)
+        public async Task<ActionResult> Create(Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +54,6 @@ namespace UGE.Areas.Admin.Controllers
             return View(subject);
         }
 
-        // GET: Admin/Subjects/Edit/5
         public async Task<ActionResult> Edit(byte? id)
         {
             if (id == null)
@@ -74,12 +68,11 @@ namespace UGE.Areas.Admin.Controllers
             return View(subject);
         }
 
-        // POST: Admin/Subjects/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "SubjectID,SubjectName")] Subject subject)
+        public async Task<ActionResult> Edit(Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +83,7 @@ namespace UGE.Areas.Admin.Controllers
             return View(subject);
         }
 
-        // GET: Admin/Subjects/Delete/5
+        
         public async Task<ActionResult> Delete(byte? id)
         {
             if (id == null)
@@ -105,7 +98,7 @@ namespace UGE.Areas.Admin.Controllers
             return View(subject);
         }
 
-        // POST: Admin/Subjects/Delete/5
+        
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(byte id)

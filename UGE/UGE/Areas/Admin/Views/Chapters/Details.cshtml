@@ -1,0 +1,50 @@
+﻿@model UGE.Models.DataStructure.Chapter
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Chapter</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TopicName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TopicName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalArticles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalArticles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MasterArticleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MasterArticleID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Book.BookName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Book.BookName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ChapterID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
