@@ -53,6 +53,12 @@ namespace UGE.Models
 
     public class RegisterViewModel
     {
+
+        [Required]
+        [StringLength(30)]
+        [Display(Name = "User Name")]
+        public string Username { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

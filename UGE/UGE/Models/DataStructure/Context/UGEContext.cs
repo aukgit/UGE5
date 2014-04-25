@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication6.Models.DataStructure
+namespace UGE.Models.DataStructure
 {
     using System;
     using System.Data.Entity;

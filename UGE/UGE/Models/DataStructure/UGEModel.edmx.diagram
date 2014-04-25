@@ -5,71 +5,71 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="337a707271024f9e8ee290aa6b094c92" Name="Diagram1">
-        <EntityTypeShape EntityType="UGEModel.AdvertiseEntry" Width="1.5" PointX="14.75" PointY="7.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Article" Width="1.5" PointX="7.5" PointY="14.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.ArticleMistake" Width="1.5" PointX="9.75" PointY="13.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Book" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Bookmark" Width="1.5" PointX="9.75" PointY="16.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Chapter" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Choice" Width="1.5" PointX="14.25" PointY="28.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Comment" Width="1.5" PointX="12.75" PointY="16.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Link" Width="1.5" PointX="17" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.LinksToDisplay" Width="1.5" PointX="9.75" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.MCQ" Width="1.5" PointX="9.75" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.MistakeQuestion" Width="1.5" PointX="17.25" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Payment" Width="1.5" PointX="12.5" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.PaymentMethod" Width="1.5" PointX="10.25" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Person" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Question" Width="1.5" PointX="12" PointY="25.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.RateMCQ" Width="1.5" PointX="15" PointY="25.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Rating" Width="1.5" PointX="12.75" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.ReplyAgainstMistake" Width="1.5" PointX="12" PointY="12.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Student" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Subject" Width="1.5" PointX="0.75" PointY="16.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.Teacher" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.User" Width="1.5" PointX="12.5" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.UserRole" Width="1.5" PointX="10.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.WatchedReference" Width="1.5" PointX="9.75" PointY="32" IsExpanded="true" />
-        <EntityTypeShape EntityType="UGEModel.WishList" Width="1.5" PointX="14.75" PointY="13" IsExpanded="true" />
-        <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_Payment" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_User1" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Link_AdvertiseEntry" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Article_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Article_Article1" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Article_Topic" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_ArticleMistake_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Bookmark_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Comment_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_LinksToDisplay_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_MCQ_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Rating_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_WatchedReference_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_WatchedReference_Article1" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_WishList_Article" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_ReplyAgainstMistake_ArticleMistake" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Chapter_Subject" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Topic_Chapter" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Bookmark_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_LinksToDisplay_Chapter" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Choice_Question" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Question_Choice" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Comment_Comment" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Comment_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Question_MCQ" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_RateMCQ_MCQ" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_MistakeQuestion_Question" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_MistakeQuestion_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Payment_PaymentMethod" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Student_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Teacher_Person" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_RateMCQ_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_RateMCQ_User1" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_Rating_User" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_ReplyAgainstMistake_ReplyAgainstMistake" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_User_UserRole" ManuallyRouted="false" />
-        <AssociationConnector Association="UGEModel.FK_WishList_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="UGEModel.AdvertiseEntry" Width="1.5" PointX="17.25" PointY="4" />
+        <EntityTypeShape EntityType="UGEModel.Article" Width="1.5" PointX="7.5" PointY="14.375" />
+        <EntityTypeShape EntityType="UGEModel.ArticleMistake" Width="1.5" PointX="9.75" PointY="19.75" />
+        <EntityTypeShape EntityType="UGEModel.Book" Width="1.5" PointX="3" PointY="16.125" />
+        <EntityTypeShape EntityType="UGEModel.Bookmark" Width="1.5" PointX="12.75" PointY="12.25" />
+        <EntityTypeShape EntityType="UGEModel.Chapter" Width="1.5" PointX="5.25" PointY="16" />
+        <EntityTypeShape EntityType="UGEModel.Choice" Width="1.5" PointX="17.25" PointY="38" />
+        <EntityTypeShape EntityType="UGEModel.Comment" Width="1.5" PointX="9.75" PointY="11.875" />
+        <EntityTypeShape EntityType="UGEModel.Link" Width="1.5" PointX="19.5" PointY="5.25" />
+        <EntityTypeShape EntityType="UGEModel.LinksToDisplay" Width="1.5" PointX="14.75" PointY="20.25" />
+        <EntityTypeShape EntityType="UGEModel.MCQ" Width="1.5" PointX="9.75" PointY="34.5" />
+        <EntityTypeShape EntityType="UGEModel.MistakeQuestion" Width="1.5" PointX="17.25" PointY="34.625" />
+        <EntityTypeShape EntityType="UGEModel.Payment" Width="1.5" PointX="15" PointY="1.875" />
+        <EntityTypeShape EntityType="UGEModel.PaymentMethod" Width="1.5" PointX="12.75" PointY="2.375" />
+        <EntityTypeShape EntityType="UGEModel.Person" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="UGEModel.Question" Width="1.5" PointX="15" PointY="34.5" />
+        <EntityTypeShape EntityType="UGEModel.RateMCQ" Width="1.5" PointX="12" PointY="34.625" />
+        <EntityTypeShape EntityType="UGEModel.Rating" Width="1.5" PointX="12.75" PointY="15.875" />
+        <EntityTypeShape EntityType="UGEModel.ReplyAgainstMistake" Width="1.5" PointX="12" PointY="19.5" />
+        <EntityTypeShape EntityType="UGEModel.Student" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="UGEModel.Subject" Width="1.5" PointX="0.75" PointY="16.375" />
+        <EntityTypeShape EntityType="UGEModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="UGEModel.Teacher" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="UGEModel.User" Width="1.5" PointX="10.5" PointY="6" />
+        <EntityTypeShape EntityType="UGEModel.UserRole" Width="1.5" PointX="8.25" PointY="7.375" />
+        <EntityTypeShape EntityType="UGEModel.WatchedReference" Width="1.5" PointX="9.75" PointY="31.75" />
+        <EntityTypeShape EntityType="UGEModel.WishList" Width="1.5" PointX="9.75" PointY="16" />
+        <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_Payment" />
+        <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_User" />
+        <AssociationConnector Association="UGEModel.FK_AdvertiseEntry_User1" />
+        <AssociationConnector Association="UGEModel.FK_Link_AdvertiseEntry" />
+        <AssociationConnector Association="UGEModel.FK_Article_Article" />
+        <AssociationConnector Association="UGEModel.FK_Article_Article1" />
+        <AssociationConnector Association="UGEModel.FK_Article_Topic" />
+        <AssociationConnector Association="UGEModel.FK_ArticleMistake_Article" />
+        <AssociationConnector Association="UGEModel.FK_Bookmark_Article" />
+        <AssociationConnector Association="UGEModel.FK_Comment_Article" />
+        <AssociationConnector Association="UGEModel.FK_LinksToDisplay_Article" />
+        <AssociationConnector Association="UGEModel.FK_MCQ_Article" />
+        <AssociationConnector Association="UGEModel.FK_Rating_Article" />
+        <AssociationConnector Association="UGEModel.FK_WatchedReference_Article" />
+        <AssociationConnector Association="UGEModel.FK_WatchedReference_Article1" />
+        <AssociationConnector Association="UGEModel.FK_WishList_Article" />
+        <AssociationConnector Association="UGEModel.FK_ReplyAgainstMistake_ArticleMistake" />
+        <AssociationConnector Association="UGEModel.FK_Chapter_Subject" />
+        <AssociationConnector Association="UGEModel.FK_Topic_Chapter" />
+        <AssociationConnector Association="UGEModel.FK_Bookmark_User" />
+        <AssociationConnector Association="UGEModel.FK_LinksToDisplay_Chapter" />
+        <AssociationConnector Association="UGEModel.FK_Choice_Question" />
+        <AssociationConnector Association="UGEModel.FK_Question_Choice" />
+        <AssociationConnector Association="UGEModel.FK_Comment_Comment" />
+        <AssociationConnector Association="UGEModel.FK_Comment_User" />
+        <AssociationConnector Association="UGEModel.FK_Question_MCQ" />
+        <AssociationConnector Association="UGEModel.FK_RateMCQ_MCQ" />
+        <AssociationConnector Association="UGEModel.FK_MistakeQuestion_Question" />
+        <AssociationConnector Association="UGEModel.FK_MistakeQuestion_User" />
+        <AssociationConnector Association="UGEModel.FK_Payment_PaymentMethod" />
+        <AssociationConnector Association="UGEModel.FK_Student_Person" />
+        <AssociationConnector Association="UGEModel.FK_Teacher_Person" />
+        <AssociationConnector Association="UGEModel.FK_RateMCQ_User" />
+        <AssociationConnector Association="UGEModel.FK_RateMCQ_User1" />
+        <AssociationConnector Association="UGEModel.FK_Rating_User" />
+        <AssociationConnector Association="UGEModel.FK_ReplyAgainstMistake_ReplyAgainstMistake" />
+        <AssociationConnector Association="UGEModel.FK_User_UserRole" />
+        <AssociationConnector Association="UGEModel.FK_WishList_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

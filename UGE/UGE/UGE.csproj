@@ -161,6 +161,8 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -168,38 +170,101 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\DataStructure\Context\AdvertiseEntry.cs" />
-    <Compile Include="Models\DataStructure\Context\Article.cs" />
-    <Compile Include="Models\DataStructure\Context\ArticleMistake.cs" />
-    <Compile Include="Models\DataStructure\Context\Book.cs" />
-    <Compile Include="Models\DataStructure\Context\Bookmark.cs" />
-    <Compile Include="Models\DataStructure\Context\Chapter.cs" />
-    <Compile Include="Models\DataStructure\Context\Choice.cs" />
-    <Compile Include="Models\DataStructure\Context\Comment.cs" />
-    <Compile Include="Models\DataStructure\Context\Link.cs" />
-    <Compile Include="Models\DataStructure\Context\LinksToDisplay.cs" />
-    <Compile Include="Models\DataStructure\Context\MCQ.cs" />
-    <Compile Include="Models\DataStructure\Context\MistakeQuestion.cs" />
-    <Compile Include="Models\DataStructure\Context\Payment.cs" />
-    <Compile Include="Models\DataStructure\Context\PaymentMethod.cs" />
-    <Compile Include="Models\DataStructure\Context\Person.cs" />
-    <Compile Include="Models\DataStructure\Context\Question.cs" />
-    <Compile Include="Models\DataStructure\Context\RateMCQ.cs" />
-    <Compile Include="Models\DataStructure\Context\Rating.cs" />
-    <Compile Include="Models\DataStructure\Context\ReplyAgainstMistake.cs" />
-    <Compile Include="Models\DataStructure\Context\Student.cs" />
-    <Compile Include="Models\DataStructure\Context\Subject.cs" />
-    <Compile Include="Models\DataStructure\Context\sysdiagram.cs" />
-    <Compile Include="Models\DataStructure\Context\Teacher.cs" />
-    <Compile Include="Models\DataStructure\Context\UGEContext.cs" />
-    <Compile Include="Models\DataStructure\Context\User.cs" />
-    <Compile Include="Models\DataStructure\Context\UserRole.cs" />
-    <Compile Include="Models\DataStructure\Context\WatchedReference.cs" />
-    <Compile Include="Models\DataStructure\Context\WishList.cs" />
+    <Compile Include="Models\DataStructure\AdvertiseEntry.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Article.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\ArticleMistake.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Book.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Bookmark.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Chapter.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Choice.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Comment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Link.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\LinksToDisplay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\MCQ.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\MistakeQuestion.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Payment.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\PaymentMethod.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Person.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Question.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\RateMCQ.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Rating.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\ReplyAgainstMistake.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Student.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Subject.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\Teacher.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DataStructure\UGEModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UGEModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\User.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\UserRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\WatchedReference.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataStructure\WishList.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -225,6 +290,32 @@
     <Content Include="Models\DataStructure\UGEModel.edmx.diagram">
       <DependentUpon>UGEModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Models\DataStructure\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>UGEModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DataStructure\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>UGEModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="CodeTemplates\MvcView\Create.cs.t4" />
+    <Content Include="CodeTemplates\MvcView\Delete.cs.t4" />
+    <Content Include="CodeTemplates\MvcView\Details.cs.t4" />
+    <Content Include="CodeTemplates\MvcView\Edit.cs.t4" />
+    <Content Include="CodeTemplates\MvcView\Empty.cs.t4" />
+    <Content Include="CodeTemplates\MvcView\Imports.include.t4" />
+    <Content Include="CodeTemplates\MvcView\List.cs.t4" />
+    <Content Include="CodeTemplates\MvcView\ModelMetadataFunctions.cs.include.t4" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\Subjects\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Subjects\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Subjects\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Subjects\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Subjects\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -269,7 +360,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="CodeTemplates\" />
+    <Folder Include="Areas\Admin\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
