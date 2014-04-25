@@ -26,7 +26,6 @@ if (!String.IsNullOrEmpty(LayoutPageFile)) {
 #>
 }
 
-<h2>@ViewBag.Title</h2>
 
 <#
 } else {
@@ -74,7 +73,7 @@ if (ReferenceScriptLibraries) {
 <#
 }
 #>
-@using (Html.BeginForm("<#= ViewName#>", "<#= ViewDataTypeName.Split('.').Last() #>", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
+@using (Html.BeginForm("<#= ViewName#>", ViewContext.RouteData.Values["Controller"].ToString(), FormMethod.Post, new { @class = "form-horizontal", role = "form" })) 
 {
     @Html.AntiForgeryToken()
     

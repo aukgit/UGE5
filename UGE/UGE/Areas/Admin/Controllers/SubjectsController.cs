@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -15,19 +16,19 @@ namespace UGE.Areas.Admin.Controllers
         private UGEContext db = new UGEContext();
 
         // GET: Admin/Subjects
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View(db.Subjects.ToList());
+            return View(await db.Subjects.ToListAsync());
         }
 
         // GET: Admin/Subjects/Details/5
-        public ActionResult Details(byte? id)
+        public async Task<ActionResult> Details(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subject subject = db.Subjects.Find(id);
+            Subject subject = await db.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return HttpNotFound();
@@ -46,12 +47,12 @@ namespace UGE.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubjectID,SubjectName")] Subject subject)
+        public async Task<ActionResult> Create([Bind(Include = "SubjectID,SubjectName")] Subject subject)
         {
             if (ModelState.IsValid)
             {
                 db.Subjects.Add(subject);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -59,13 +60,13 @@ namespace UGE.Areas.Admin.Controllers
         }
 
         // GET: Admin/Subjects/Edit/5
-        public ActionResult Edit(byte? id)
+        public async Task<ActionResult> Edit(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subject subject = db.Subjects.Find(id);
+            Subject subject = await db.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return HttpNotFound();
@@ -78,25 +79,25 @@ namespace UGE.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SubjectID,SubjectName")] Subject subject)
+        public async Task<ActionResult> Edit([Bind(Include = "SubjectID,SubjectName")] Subject subject)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(subject).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             return View(subject);
         }
 
         // GET: Admin/Subjects/Delete/5
-        public ActionResult Delete(byte? id)
+        public async Task<ActionResult> Delete(byte? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Subject subject = db.Subjects.Find(id);
+            Subject subject = await db.Subjects.FindAsync(id);
             if (subject == null)
             {
                 return HttpNotFound();
@@ -107,11 +108,11 @@ namespace UGE.Areas.Admin.Controllers
         // POST: Admin/Subjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(byte id)
+        public async Task<ActionResult> DeleteConfirmed(byte id)
         {
-            Subject subject = db.Subjects.Find(id);
+            Subject subject = await db.Subjects.FindAsync(id);
             db.Subjects.Remove(subject);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
