@@ -1,0 +1,2212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="UGEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdvertiseEntry">
+          <Key>
+            <PropertyRef Name="AdvertiseEntryID" />
+          </Key>
+          <Property Name="AdvertiseEntryID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdvertiseName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="800" Nullable="false" />
+          <Property Name="IsPublished" Type="bit" Nullable="false" />
+          <Property Name="IsPublishedDateOver" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="date" Nullable="false" />
+          <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="OfferToPayFor" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="IsAccepted" Type="bit" Nullable="false" />
+          <Property Name="AdvertisePlacedByUserID" Type="int" Nullable="false" />
+          <Property Name="AcceptedByUserID" Type="int" />
+          <Property Name="PaymentID" Type="bigint" />
+          <Property Name="IsPaymentSuccessful" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleName" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="800" Nullable="false" />
+          <Property Name="PreviousArticleID" Type="bigint" />
+          <Property Name="NextArticleID" Type="bigint" />
+          <Property Name="ChapterID" Type="int" Nullable="false" />
+          <Property Name="VideoEmbedLink" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="Height" Type="smallint" Nullable="false" />
+          <Property Name="Width" Type="smallint" Nullable="false" />
+          <Property Name="AvgRating" Type="tinyint" />
+          <Property Name="VideoLink" Type="varchar" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="ArticleMistake">
+          <Key>
+            <PropertyRef Name="ArticleMistakeID" />
+          </Key>
+          <Property Name="ArticleMistakeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="SubmitedDated" Type="smalldatetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectID" Type="tinyint" Nullable="false" />
+          <Property Name="BookName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="NewField" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Bookmark">
+          <Key>
+            <PropertyRef Name="BookmarkID" />
+          </Key>
+          <Property Name="BookmarkID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Chapter">
+          <Key>
+            <PropertyRef Name="ChapterID" />
+          </Key>
+          <Property Name="ChapterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BookID" Type="int" Nullable="false" />
+          <Property Name="TopicName" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TotalArticles" Type="int" Nullable="false" />
+          <Property Name="MasterArticleID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Choice">
+          <Key>
+            <PropertyRef Name="ChoiceID" />
+          </Key>
+          <Property Name="ChoiceID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionID" Type="bigint" Nullable="false" />
+          <Property Name="ChoiceDisplay" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CommentsAboutArticle" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="ReplyCommentID" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="AdvertiseEntryID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LinksToDisplay">
+          <Key>
+            <PropertyRef Name="LinksToDisplayID" />
+          </Key>
+          <Property Name="LinksToDisplayID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="ChapterID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MCQ">
+          <Key>
+            <PropertyRef Name="MCQID" />
+          </Key>
+          <Property Name="MCQID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Duration" Type="smallint" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="DisplayQuestion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MistakeQuestion">
+          <Key>
+            <PropertyRef Name="MistakeQuestionID" />
+          </Key>
+          <Property Name="MistakeQuestionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuestionID" Type="bigint" Nullable="false" />
+          <Property Name="SendByUserID" Type="int" Nullable="false" />
+          <Property Name="IsErrorFixed" Type="bit" Nullable="false" />
+          <Property Name="IsReceived" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PaymentMethodID" Type="tinyint" Nullable="false" />
+          <Property Name="Paid" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Dated" Type="smalldatetime" Nullable="false" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="60" />
+          <Property Name="AdditionalInformation" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameOfMethod" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Hint" Type="varchar" MaxLength="200" />
+          <Property Name="AnswerChoiceID" Type="bigint" Nullable="false" />
+          <Property Name="QuestionDisplay" Type="varchar" MaxLength="800" Nullable="false" />
+          <Property Name="MCQID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RateMCQ">
+          <Key>
+            <PropertyRef Name="RateMCQID" />
+          </Key>
+          <Property Name="RateMCQID" Type="bigint" Nullable="false" />
+          <Property Name="MCQID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Rating" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="VideoQualtiy" Type="tinyint" Nullable="false" />
+          <Property Name="TechingTechnique" Type="tinyint" Nullable="false" />
+          <Property Name="Mateials" Type="tinyint" Nullable="false" />
+          <Property Name="AvgRating" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReplyAgainstMistake">
+          <Key>
+            <PropertyRef Name="ReplyAgainstMistakeID" />
+          </Key>
+          <Property Name="ReplyAgainstMistakeID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleMistakeID" Type="bigint" Nullable="false" />
+          <Property Name="RepliedByWhomID" Type="int" Nullable="false" />
+          <Property Name="Reply" Type="varchar" MaxLength="800" Nullable="false" />
+          <Property Name="LinkedReplyMistakeID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="Grades" Type="float" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectID" />
+          </Key>
+          <Property Name="SubjectID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SubjectName" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="TeachingAbility" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="101" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AccountID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="UserRoleID" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="PriorityRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WatchedReference">
+          <Key>
+            <PropertyRef Name="WatchedReferenceID" />
+          </Key>
+          <Property Name="WatchedReferenceID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WhichFromArticleID" Type="bigint" Nullable="false" />
+          <Property Name="WhichToArticleID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="WishListID" />
+          </Key>
+          <Property Name="WishListID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ArticleID" Type="bigint" Nullable="false" />
+          <Property Name="Dated" Type="date" Nullable="false" />
+          <Property Name="LastNotified" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AdvertiseEntry_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="AdvertiseEntry">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertiseEntry_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AdvertiseEntry">
+              <PropertyRef Name="AdvertisePlacedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertiseEntry_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AdvertiseEntry">
+              <PropertyRef Name="AcceptedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Article1" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Article1">
+              <PropertyRef Name="PreviousArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Article1">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Article1" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Article1">
+              <PropertyRef Name="NextArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Topic">
+          <End Role="Chapter" Type="Self.Chapter" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chapter">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleMistake_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="ArticleMistake" Type="Self.ArticleMistake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="ArticleMistake">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookmark_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Bookmark" Type="Self.Bookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Bookmark">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookmark_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Bookmark" Type="Self.Bookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Bookmark">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chapter_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choice_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Choice" Type="Self.Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="Choice">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="0..1" />
+          <End Role="Comment1" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentID" />
+            </Principal>
+            <Dependent Role="Comment1">
+              <PropertyRef Name="ReplyCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Link_AdvertiseEntry">
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="1" />
+          <End Role="Link" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertiseEntry">
+              <PropertyRef Name="AdvertiseEntryID" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="AdvertiseEntryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LinksToDisplay_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="LinksToDisplay" Type="Self.LinksToDisplay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="LinksToDisplay">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LinksToDisplay_Chapter">
+          <End Role="Chapter" Type="Self.Chapter" Multiplicity="1" />
+          <End Role="LinksToDisplay" Type="Self.LinksToDisplay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chapter">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="LinksToDisplay">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MCQ_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="MCQ">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MistakeQuestion_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="MistakeQuestion" Type="Self.MistakeQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="MistakeQuestion">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MistakeQuestion_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="MistakeQuestion" Type="Self.MistakeQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MistakeQuestion">
+              <PropertyRef Name="SendByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_PaymentMethod">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Choice">
+          <End Role="Choice" Type="Self.Choice" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Choice">
+              <PropertyRef Name="ChoiceID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="AnswerChoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_MCQ">
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MCQ">
+              <PropertyRef Name="MCQID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="MCQID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateMCQ_MCQ">
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
+          <End Role="RateMCQ" Type="Self.RateMCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MCQ">
+              <PropertyRef Name="MCQID" />
+            </Principal>
+            <Dependent Role="RateMCQ">
+              <PropertyRef Name="MCQID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateMCQ_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="RateMCQ" Type="Self.RateMCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RateMCQ">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateMCQ_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="RateMCQ" Type="Self.RateMCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RateMCQ">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyAgainstMistake_ArticleMistake">
+          <End Role="ArticleMistake" Type="Self.ArticleMistake" Multiplicity="1" />
+          <End Role="ReplyAgainstMistake" Type="Self.ReplyAgainstMistake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleMistake">
+              <PropertyRef Name="ArticleMistakeID" />
+            </Principal>
+            <Dependent Role="ReplyAgainstMistake">
+              <PropertyRef Name="ArticleMistakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyAgainstMistake_ReplyAgainstMistake">
+          <End Role="ReplyAgainstMistake" Type="Self.ReplyAgainstMistake" Multiplicity="1" />
+          <End Role="ReplyAgainstMistake1" Type="Self.ReplyAgainstMistake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReplyAgainstMistake">
+              <PropertyRef Name="ReplyAgainstMistakeID" />
+            </Principal>
+            <Dependent Role="ReplyAgainstMistake1">
+              <PropertyRef Name="LinkedReplyMistakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Topic_Chapter">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Chapter" Type="Self.Chapter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="Chapter">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="UserRoleID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchedReference_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="WatchedReference" Type="Self.WatchedReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="WatchedReference">
+              <PropertyRef Name="WhichFromArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchedReference_Article1">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="WatchedReference" Type="Self.WatchedReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="WatchedReference">
+              <PropertyRef Name="WhichToArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UGEModelStoreContainer">
+          <EntitySet Name="AdvertiseEntry" EntityType="Self.AdvertiseEntry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticleMistake" EntityType="Self.ArticleMistake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Book" EntityType="Self.Book" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bookmark" EntityType="Self.Bookmark" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Chapter" EntityType="Self.Chapter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Choice" EntityType="Self.Choice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comment" EntityType="Self.Comment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Link" EntityType="Self.Link" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinksToDisplay" EntityType="Self.LinksToDisplay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MCQ" EntityType="Self.MCQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MistakeQuestion" EntityType="Self.MistakeQuestion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RateMCQ" EntityType="Self.RateMCQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rating" EntityType="Self.Rating" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReplyAgainstMistake" EntityType="Self.ReplyAgainstMistake" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WatchedReference" EntityType="Self.WatchedReference" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WishList" EntityType="Self.WishList" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdvertiseEntry_Payment" Association="Self.FK_AdvertiseEntry_Payment">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertiseEntry_User" Association="Self.FK_AdvertiseEntry_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertiseEntry_User1" Association="Self.FK_AdvertiseEntry_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntry" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Article" Association="Self.FK_Article_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Article1" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Article1" Association="Self.FK_Article_Article1">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Article1" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Topic" Association="Self.FK_Article_Topic">
+            <End Role="Chapter" EntitySet="Chapter" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleMistake_Article" Association="Self.FK_ArticleMistake_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="ArticleMistake" EntitySet="ArticleMistake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookmark_Article" Association="Self.FK_Bookmark_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Bookmark" EntitySet="Bookmark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookmark_User" Association="Self.FK_Bookmark_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Bookmark" EntitySet="Bookmark" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chapter_Subject" Association="Self.FK_Chapter_Subject">
+            <End Role="Subject" EntitySet="Subject" />
+            <End Role="Book" EntitySet="Book" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choice_Question" Association="Self.FK_Choice_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="Choice" EntitySet="Choice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Article" Association="Self.FK_Comment_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Comment" Association="Self.FK_Comment_Comment">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Comment1" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Link_AdvertiseEntry" Association="Self.FK_Link_AdvertiseEntry">
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntry" />
+            <End Role="Link" EntitySet="Link" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LinksToDisplay_Article" Association="Self.FK_LinksToDisplay_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="LinksToDisplay" EntitySet="LinksToDisplay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LinksToDisplay_Chapter" Association="Self.FK_LinksToDisplay_Chapter">
+            <End Role="Chapter" EntitySet="Chapter" />
+            <End Role="LinksToDisplay" EntitySet="LinksToDisplay" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MCQ_Article" Association="Self.FK_MCQ_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="MCQ" EntitySet="MCQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MistakeQuestion_Question" Association="Self.FK_MistakeQuestion_Question">
+            <End Role="Question" EntitySet="Question" />
+            <End Role="MistakeQuestion" EntitySet="MistakeQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MistakeQuestion_User" Association="Self.FK_MistakeQuestion_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="MistakeQuestion" EntitySet="MistakeQuestion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_PaymentMethod" Association="Self.FK_Payment_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Choice" Association="Self.FK_Question_Choice">
+            <End Role="Choice" EntitySet="Choice" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_MCQ" Association="Self.FK_Question_MCQ">
+            <End Role="MCQ" EntitySet="MCQ" />
+            <End Role="Question" EntitySet="Question" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateMCQ_MCQ" Association="Self.FK_RateMCQ_MCQ">
+            <End Role="MCQ" EntitySet="MCQ" />
+            <End Role="RateMCQ" EntitySet="RateMCQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateMCQ_User" Association="Self.FK_RateMCQ_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="RateMCQ" EntitySet="RateMCQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateMCQ_User1" Association="Self.FK_RateMCQ_User1">
+            <End Role="User" EntitySet="User" />
+            <End Role="RateMCQ" EntitySet="RateMCQ" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Article" Association="Self.FK_Rating_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_User" Association="Self.FK_Rating_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Rating" EntitySet="Rating" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyAgainstMistake_ArticleMistake" Association="Self.FK_ReplyAgainstMistake_ArticleMistake">
+            <End Role="ArticleMistake" EntitySet="ArticleMistake" />
+            <End Role="ReplyAgainstMistake" EntitySet="ReplyAgainstMistake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyAgainstMistake_ReplyAgainstMistake" Association="Self.FK_ReplyAgainstMistake_ReplyAgainstMistake">
+            <End Role="ReplyAgainstMistake" EntitySet="ReplyAgainstMistake" />
+            <End Role="ReplyAgainstMistake1" EntitySet="ReplyAgainstMistake" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Student" EntitySet="Student" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Person" Association="Self.FK_Teacher_Person">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Teacher" EntitySet="Teacher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Topic_Chapter" Association="Self.FK_Topic_Chapter">
+            <End Role="Book" EntitySet="Book" />
+            <End Role="Chapter" EntitySet="Chapter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole" Association="Self.FK_User_UserRole">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchedReference_Article" Association="Self.FK_WatchedReference_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="WatchedReference" EntitySet="WatchedReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchedReference_Article1" Association="Self.FK_WatchedReference_Article1">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="WatchedReference" EntitySet="WatchedReference" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Article" Association="Self.FK_WishList_Article">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_User" Association="Self.FK_WishList_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="WishList" EntitySet="WishList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UGEModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdvertiseEntry">
+          <Key>
+            <PropertyRef Name="AdvertiseEntryID" />
+          </Key>
+          <Property Name="AdvertiseEntryID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdvertiseName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsPublished" Type="Boolean" Nullable="false" />
+          <Property Name="IsPublishedDateOver" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="OfferToPayFor" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="IsAccepted" Type="Boolean" Nullable="false" />
+          <Property Name="AdvertisePlacedByUserID" Type="Int32" Nullable="false" />
+          <Property Name="AcceptedByUserID" Type="Int32" />
+          <Property Name="PaymentID" Type="Int64" />
+          <Property Name="IsPaymentSuccessful" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Payment" Relationship="Self.FK_AdvertiseEntry_Payment" FromRole="AdvertiseEntry" ToRole="Payment" />
+          <NavigationProperty Name="User" Relationship="Self.FK_AdvertiseEntry_User" FromRole="AdvertiseEntry" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_AdvertiseEntry_User1" FromRole="AdvertiseEntry" ToRole="User" />
+          <NavigationProperty Name="Links" Relationship="Self.FK_Link_AdvertiseEntry" FromRole="AdvertiseEntry" ToRole="Link" />
+        </EntityType>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="ArticleID" />
+          </Key>
+          <Property Name="ArticleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="800" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PreviousArticleID" Type="Int64" />
+          <Property Name="NextArticleID" Type="Int64" />
+          <Property Name="ChapterID" Type="Int32" Nullable="false" />
+          <Property Name="VideoEmbedLink" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Height" Type="Int16" Nullable="false" />
+          <Property Name="Width" Type="Int16" Nullable="false" />
+          <Property Name="AvgRating" Type="Byte" />
+          <Property Name="VideoLink" Type="String" MaxLength="800" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Article1" Relationship="Self.FK_Article_Article" FromRole="Article" ToRole="Article1" />
+          <NavigationProperty Name="Article2" Relationship="Self.FK_Article_Article" FromRole="Article1" ToRole="Article" />
+          <NavigationProperty Name="Article11" Relationship="Self.FK_Article_Article1" FromRole="Article" ToRole="Article1" />
+          <NavigationProperty Name="Article3" Relationship="Self.FK_Article_Article1" FromRole="Article1" ToRole="Article" />
+          <NavigationProperty Name="Chapter" Relationship="Self.FK_Article_Topic" FromRole="Article" ToRole="Chapter" />
+          <NavigationProperty Name="ArticleMistakes" Relationship="Self.FK_ArticleMistake_Article" FromRole="Article" ToRole="ArticleMistake" />
+          <NavigationProperty Name="Bookmarks" Relationship="Self.FK_Bookmark_Article" FromRole="Article" ToRole="Bookmark" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_Article" FromRole="Article" ToRole="Comment" />
+          <NavigationProperty Name="LinksToDisplays" Relationship="Self.FK_LinksToDisplay_Article" FromRole="Article" ToRole="LinksToDisplay" />
+          <NavigationProperty Name="MCQs" Relationship="Self.FK_MCQ_Article" FromRole="Article" ToRole="MCQ" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_Rating_Article" FromRole="Article" ToRole="Rating" />
+          <NavigationProperty Name="WatchedReferences" Relationship="Self.FK_WatchedReference_Article" FromRole="Article" ToRole="WatchedReference" />
+          <NavigationProperty Name="WatchedReferences1" Relationship="Self.FK_WatchedReference_Article1" FromRole="Article" ToRole="WatchedReference" />
+          <NavigationProperty Name="WishLists" Relationship="Self.FK_WishList_Article" FromRole="Article" ToRole="WishList" />
+        </EntityType>
+        <EntityType Name="ArticleMistake">
+          <Key>
+            <PropertyRef Name="ArticleMistakeID" />
+          </Key>
+          <Property Name="ArticleMistakeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="SubmitedDated" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_ArticleMistake_Article" FromRole="ArticleMistake" ToRole="Article" />
+          <NavigationProperty Name="ReplyAgainstMistakes" Relationship="Self.FK_ReplyAgainstMistake_ArticleMistake" FromRole="ArticleMistake" ToRole="ReplyAgainstMistake" />
+        </EntityType>
+        <EntityType Name="Book">
+          <Key>
+            <PropertyRef Name="BookID" />
+          </Key>
+          <Property Name="BookID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectID" Type="Byte" Nullable="false" />
+          <Property Name="BookName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NewField" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Subject" Relationship="Self.FK_Chapter_Subject" FromRole="Book" ToRole="Subject" />
+          <NavigationProperty Name="Chapters" Relationship="Self.FK_Topic_Chapter" FromRole="Book" ToRole="Chapter" />
+        </EntityType>
+        <EntityType Name="Bookmark">
+          <Key>
+            <PropertyRef Name="BookmarkID" />
+          </Key>
+          <Property Name="BookmarkID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Bookmark_Article" FromRole="Bookmark" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Bookmark_User" FromRole="Bookmark" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Chapter">
+          <Key>
+            <PropertyRef Name="ChapterID" />
+          </Key>
+          <Property Name="ChapterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BookID" Type="Int32" Nullable="false" />
+          <Property Name="TopicName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TotalArticles" Type="Int32" Nullable="false" />
+          <Property Name="MasterArticleID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Articles" Relationship="Self.FK_Article_Topic" FromRole="Chapter" ToRole="Article" />
+          <NavigationProperty Name="Book" Relationship="Self.FK_Topic_Chapter" FromRole="Chapter" ToRole="Book" />
+          <NavigationProperty Name="LinksToDisplays" Relationship="Self.FK_LinksToDisplay_Chapter" FromRole="Chapter" ToRole="LinksToDisplay" />
+        </EntityType>
+        <EntityType Name="Choice">
+          <Key>
+            <PropertyRef Name="ChoiceID" />
+          </Key>
+          <Property Name="ChoiceID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionID" Type="Int64" Nullable="false" />
+          <Property Name="ChoiceDisplay" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_Choice_Question" FromRole="Choice" ToRole="Question" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Question_Choice" FromRole="Choice" ToRole="Question" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="CommentID" />
+          </Key>
+          <Property Name="CommentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CommentsAboutArticle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ReplyCommentID" Type="Int64" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Comment_Article" FromRole="Comment" ToRole="Article" />
+          <NavigationProperty Name="Comment1" Relationship="Self.FK_Comment_Comment" FromRole="Comment" ToRole="Comment1" />
+          <NavigationProperty Name="Comment2" Relationship="Self.FK_Comment_Comment" FromRole="Comment1" ToRole="Comment" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comment_User" FromRole="Comment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Link">
+          <Key>
+            <PropertyRef Name="LinkID" />
+          </Key>
+          <Property Name="LinkID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="URL" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AdvertiseEntryID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="AdvertiseEntry" Relationship="Self.FK_Link_AdvertiseEntry" FromRole="Link" ToRole="AdvertiseEntry" />
+        </EntityType>
+        <EntityType Name="LinksToDisplay">
+          <Key>
+            <PropertyRef Name="LinksToDisplayID" />
+          </Key>
+          <Property Name="LinksToDisplayID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="ChapterID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_LinksToDisplay_Article" FromRole="LinksToDisplay" ToRole="Article" />
+          <NavigationProperty Name="Chapter" Relationship="Self.FK_LinksToDisplay_Chapter" FromRole="LinksToDisplay" ToRole="Chapter" />
+        </EntityType>
+        <EntityType Name="MCQ">
+          <Key>
+            <PropertyRef Name="MCQID" />
+          </Key>
+          <Property Name="MCQID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Duration" Type="Int16" Nullable="false" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisplayQuestion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_MCQ_Article" FromRole="MCQ" ToRole="Article" />
+          <NavigationProperty Name="Questions" Relationship="Self.FK_Question_MCQ" FromRole="MCQ" ToRole="Question" />
+          <NavigationProperty Name="RateMCQs" Relationship="Self.FK_RateMCQ_MCQ" FromRole="MCQ" ToRole="RateMCQ" />
+        </EntityType>
+        <EntityType Name="MistakeQuestion">
+          <Key>
+            <PropertyRef Name="MistakeQuestionID" />
+          </Key>
+          <Property Name="MistakeQuestionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionID" Type="Int64" Nullable="false" />
+          <Property Name="SendByUserID" Type="Int32" Nullable="false" />
+          <Property Name="IsErrorFixed" Type="Boolean" Nullable="false" />
+          <Property Name="IsReceived" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Question" Relationship="Self.FK_MistakeQuestion_Question" FromRole="MistakeQuestion" ToRole="Question" />
+          <NavigationProperty Name="User" Relationship="Self.FK_MistakeQuestion_User" FromRole="MistakeQuestion" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="PaymentID" />
+          </Key>
+          <Property Name="PaymentID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PaymentMethodID" Type="Byte" Nullable="false" />
+          <Property Name="Paid" Type="Decimal" Precision="9" Scale="2" Nullable="false" />
+          <Property Name="Dated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CardNumber" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="AdditionalInformation" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AdvertiseEntries" Relationship="Self.FK_AdvertiseEntry_Payment" FromRole="Payment" ToRole="AdvertiseEntry" />
+          <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_Payment_PaymentMethod" FromRole="Payment" ToRole="PaymentMethod" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="PaymentMethodID" />
+          </Key>
+          <Property Name="PaymentMethodID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameOfMethod" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Payments" Relationship="Self.FK_Payment_PaymentMethod" FromRole="PaymentMethod" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Student_Person" FromRole="Person" ToRole="Student" />
+          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teacher_Person" FromRole="Person" ToRole="Teacher" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Hint" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="AnswerChoiceID" Type="Int64" Nullable="false" />
+          <Property Name="QuestionDisplay" Type="String" MaxLength="800" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MCQID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Choices" Relationship="Self.FK_Choice_Question" FromRole="Question" ToRole="Choice" />
+          <NavigationProperty Name="Choice" Relationship="Self.FK_Question_Choice" FromRole="Question" ToRole="Choice" />
+          <NavigationProperty Name="MCQ" Relationship="Self.FK_Question_MCQ" FromRole="Question" ToRole="MCQ" />
+          <NavigationProperty Name="MistakeQuestions" Relationship="Self.FK_MistakeQuestion_Question" FromRole="Question" ToRole="MistakeQuestion" />
+        </EntityType>
+        <EntityType Name="RateMCQ">
+          <Key>
+            <PropertyRef Name="RateMCQID" />
+          </Key>
+          <Property Name="RateMCQID" Type="Int64" Nullable="false" />
+          <Property Name="MCQID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Rating" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="MCQ" Relationship="Self.FK_RateMCQ_MCQ" FromRole="RateMCQ" ToRole="MCQ" />
+          <NavigationProperty Name="User" Relationship="Self.FK_RateMCQ_User" FromRole="RateMCQ" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_RateMCQ_User1" FromRole="RateMCQ" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Rating">
+          <Key>
+            <PropertyRef Name="RatingID" />
+          </Key>
+          <Property Name="RatingID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="VideoQualtiy" Type="Byte" Nullable="false" />
+          <Property Name="TechingTechnique" Type="Byte" Nullable="false" />
+          <Property Name="Mateials" Type="Byte" Nullable="false" />
+          <Property Name="AvgRating" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_Rating_Article" FromRole="Rating" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Rating_User" FromRole="Rating" ToRole="User" />
+        </EntityType>
+        <EntityType Name="ReplyAgainstMistake">
+          <Key>
+            <PropertyRef Name="ReplyAgainstMistakeID" />
+          </Key>
+          <Property Name="ReplyAgainstMistakeID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleMistakeID" Type="Int64" Nullable="false" />
+          <Property Name="RepliedByWhomID" Type="Int32" Nullable="false" />
+          <Property Name="Reply" Type="String" MaxLength="800" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LinkedReplyMistakeID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="ArticleMistake" Relationship="Self.FK_ReplyAgainstMistake_ArticleMistake" FromRole="ReplyAgainstMistake" ToRole="ArticleMistake" />
+          <NavigationProperty Name="ReplyAgainstMistake1" Relationship="Self.FK_ReplyAgainstMistake_ReplyAgainstMistake" FromRole="ReplyAgainstMistake" ToRole="ReplyAgainstMistake1" />
+          <NavigationProperty Name="ReplyAgainstMistake2" Relationship="Self.FK_ReplyAgainstMistake_ReplyAgainstMistake" FromRole="ReplyAgainstMistake1" ToRole="ReplyAgainstMistake" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="Grades" Type="Double" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Student_Person" FromRole="Student" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="SubjectID" />
+          </Key>
+          <Property Name="SubjectID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubjectName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="Self.FK_Chapter_Subject" FromRole="Subject" ToRole="Book" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="TeacherID" />
+          </Key>
+          <Property Name="TeacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="TeachingAbility" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Self.FK_Teacher_Person" FromRole="Teacher" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="101" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="AccountID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserRoleID" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="AdvertiseEntries" Relationship="Self.FK_AdvertiseEntry_User" FromRole="User" ToRole="AdvertiseEntry" />
+          <NavigationProperty Name="AdvertiseEntries1" Relationship="Self.FK_AdvertiseEntry_User1" FromRole="User" ToRole="AdvertiseEntry" />
+          <NavigationProperty Name="Bookmarks" Relationship="Self.FK_Bookmark_User" FromRole="User" ToRole="Bookmark" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comment_User" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="MistakeQuestions" Relationship="Self.FK_MistakeQuestion_User" FromRole="User" ToRole="MistakeQuestion" />
+          <NavigationProperty Name="RateMCQs" Relationship="Self.FK_RateMCQ_User" FromRole="User" ToRole="RateMCQ" />
+          <NavigationProperty Name="RateMCQs1" Relationship="Self.FK_RateMCQ_User1" FromRole="User" ToRole="RateMCQ" />
+          <NavigationProperty Name="Ratings" Relationship="Self.FK_Rating_User" FromRole="User" ToRole="Rating" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK_User_UserRole" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="WishLists" Relationship="Self.FK_WishList_User" FromRole="User" ToRole="WishList" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PriorityRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_UserRole" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <EntityType Name="WatchedReference">
+          <Key>
+            <PropertyRef Name="WatchedReferenceID" />
+          </Key>
+          <Property Name="WatchedReferenceID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WhichFromArticleID" Type="Int64" Nullable="false" />
+          <Property Name="WhichToArticleID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_WatchedReference_Article" FromRole="WatchedReference" ToRole="Article" />
+          <NavigationProperty Name="Article1" Relationship="Self.FK_WatchedReference_Article1" FromRole="WatchedReference" ToRole="Article" />
+        </EntityType>
+        <EntityType Name="WishList">
+          <Key>
+            <PropertyRef Name="WishListID" />
+          </Key>
+          <Property Name="WishListID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ArticleID" Type="Int64" Nullable="false" />
+          <Property Name="Dated" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="LastNotified" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Article" Relationship="Self.FK_WishList_Article" FromRole="WishList" ToRole="Article" />
+          <NavigationProperty Name="User" Relationship="Self.FK_WishList_User" FromRole="WishList" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_AdvertiseEntry_Payment">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="0..1" />
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="PaymentID" />
+            </Principal>
+            <Dependent Role="AdvertiseEntry">
+              <PropertyRef Name="PaymentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertiseEntry_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AdvertiseEntry">
+              <PropertyRef Name="AdvertisePlacedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdvertiseEntry_User1">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="AdvertiseEntry">
+              <PropertyRef Name="AcceptedByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Link_AdvertiseEntry">
+          <End Role="AdvertiseEntry" Type="Self.AdvertiseEntry" Multiplicity="1" />
+          <End Role="Link" Type="Self.Link" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdvertiseEntry">
+              <PropertyRef Name="AdvertiseEntryID" />
+            </Principal>
+            <Dependent Role="Link">
+              <PropertyRef Name="AdvertiseEntryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Article1" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Article1">
+              <PropertyRef Name="PreviousArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Article1">
+          <End Role="Article" Type="Self.Article" Multiplicity="0..1" />
+          <End Role="Article1" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Article1">
+              <PropertyRef Name="NextArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Article_Topic">
+          <End Role="Chapter" Type="Self.Chapter" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chapter">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticleMistake_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="ArticleMistake" Type="Self.ArticleMistake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="ArticleMistake">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookmark_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Bookmark" Type="Self.Bookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Bookmark">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LinksToDisplay_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="LinksToDisplay" Type="Self.LinksToDisplay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="LinksToDisplay">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MCQ_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="MCQ">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchedReference_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="WatchedReference" Type="Self.WatchedReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="WatchedReference">
+              <PropertyRef Name="WhichFromArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WatchedReference_Article1">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="WatchedReference" Type="Self.WatchedReference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="WatchedReference">
+              <PropertyRef Name="WhichToArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_Article">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ArticleID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyAgainstMistake_ArticleMistake">
+          <End Role="ArticleMistake" Type="Self.ArticleMistake" Multiplicity="1" />
+          <End Role="ReplyAgainstMistake" Type="Self.ReplyAgainstMistake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticleMistake">
+              <PropertyRef Name="ArticleMistakeID" />
+            </Principal>
+            <Dependent Role="ReplyAgainstMistake">
+              <PropertyRef Name="ArticleMistakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Chapter_Subject">
+          <End Role="Subject" Type="Self.Subject" Multiplicity="1" />
+          <End Role="Book" Type="Self.Book" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subject">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="Book">
+              <PropertyRef Name="SubjectID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Topic_Chapter">
+          <End Role="Book" Type="Self.Book" Multiplicity="1" />
+          <End Role="Chapter" Type="Self.Chapter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Book">
+              <PropertyRef Name="BookID" />
+            </Principal>
+            <Dependent Role="Chapter">
+              <PropertyRef Name="BookID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bookmark_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Bookmark" Type="Self.Bookmark" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Bookmark">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LinksToDisplay_Chapter">
+          <End Role="Chapter" Type="Self.Chapter" Multiplicity="1" />
+          <End Role="LinksToDisplay" Type="Self.LinksToDisplay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Chapter">
+              <PropertyRef Name="ChapterID" />
+            </Principal>
+            <Dependent Role="LinksToDisplay">
+              <PropertyRef Name="ChapterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Choice_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="Choice" Type="Self.Choice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="Choice">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_Choice">
+          <End Role="Choice" Type="Self.Choice" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Choice">
+              <PropertyRef Name="ChoiceID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="AnswerChoiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_Comment">
+          <End Role="Comment" Type="Self.Comment" Multiplicity="0..1" />
+          <End Role="Comment1" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="CommentID" />
+            </Principal>
+            <Dependent Role="Comment1">
+              <PropertyRef Name="ReplyCommentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Question_MCQ">
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
+          <End Role="Question" Type="Self.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MCQ">
+              <PropertyRef Name="MCQID" />
+            </Principal>
+            <Dependent Role="Question">
+              <PropertyRef Name="MCQID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateMCQ_MCQ">
+          <End Role="MCQ" Type="Self.MCQ" Multiplicity="1" />
+          <End Role="RateMCQ" Type="Self.RateMCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MCQ">
+              <PropertyRef Name="MCQID" />
+            </Principal>
+            <Dependent Role="RateMCQ">
+              <PropertyRef Name="MCQID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MistakeQuestion_Question">
+          <End Role="Question" Type="Self.Question" Multiplicity="1" />
+          <End Role="MistakeQuestion" Type="Self.MistakeQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Question">
+              <PropertyRef Name="QuestionID" />
+            </Principal>
+            <Dependent Role="MistakeQuestion">
+              <PropertyRef Name="QuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MistakeQuestion_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="MistakeQuestion" Type="Self.MistakeQuestion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MistakeQuestion">
+              <PropertyRef Name="SendByUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Payment_PaymentMethod">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="PaymentMethodID" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="PaymentMethodID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Student_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Student" Type="Self.Student" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Student">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Teacher_Person">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Teacher">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateMCQ_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="RateMCQ" Type="Self.RateMCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RateMCQ">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RateMCQ_User1">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="RateMCQ" Type="Self.RateMCQ" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="RateMCQ">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rating_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Rating" Type="Self.Rating" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Rating">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReplyAgainstMistake_ReplyAgainstMistake">
+          <End Role="ReplyAgainstMistake" Type="Self.ReplyAgainstMistake" Multiplicity="1" />
+          <End Role="ReplyAgainstMistake1" Type="Self.ReplyAgainstMistake" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ReplyAgainstMistake">
+              <PropertyRef Name="ReplyAgainstMistakeID" />
+            </Principal>
+            <Dependent Role="ReplyAgainstMistake1">
+              <PropertyRef Name="LinkedReplyMistakeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserRole">
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="UserRoleID" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WishList_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="WishList" Type="Self.WishList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="WishList">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="UGEContext" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="AdvertiseEntries" EntityType="Self.AdvertiseEntry" />
+          <EntitySet Name="Articles" EntityType="Self.Article" />
+          <EntitySet Name="ArticleMistakes" EntityType="Self.ArticleMistake" />
+          <EntitySet Name="Books" EntityType="Self.Book" />
+          <EntitySet Name="Bookmarks" EntityType="Self.Bookmark" />
+          <EntitySet Name="Chapters" EntityType="Self.Chapter" />
+          <EntitySet Name="Choices" EntityType="Self.Choice" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="Links" EntityType="Self.Link" />
+          <EntitySet Name="LinksToDisplays" EntityType="Self.LinksToDisplay" />
+          <EntitySet Name="MCQs" EntityType="Self.MCQ" />
+          <EntitySet Name="MistakeQuestions" EntityType="Self.MistakeQuestion" />
+          <EntitySet Name="Payments" EntityType="Self.Payment" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="Questions" EntityType="Self.Question" />
+          <EntitySet Name="RateMCQs" EntityType="Self.RateMCQ" />
+          <EntitySet Name="Ratings" EntityType="Self.Rating" />
+          <EntitySet Name="ReplyAgainstMistakes" EntityType="Self.ReplyAgainstMistake" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="Subjects" EntityType="Self.Subject" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="WatchedReferences" EntityType="Self.WatchedReference" />
+          <EntitySet Name="WishLists" EntityType="Self.WishList" />
+          <AssociationSet Name="FK_AdvertiseEntry_Payment" Association="Self.FK_AdvertiseEntry_Payment">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertiseEntry_User" Association="Self.FK_AdvertiseEntry_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdvertiseEntry_User1" Association="Self.FK_AdvertiseEntry_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Link_AdvertiseEntry" Association="Self.FK_Link_AdvertiseEntry">
+            <End Role="AdvertiseEntry" EntitySet="AdvertiseEntries" />
+            <End Role="Link" EntitySet="Links" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Article" Association="Self.FK_Article_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Article1" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Article1" Association="Self.FK_Article_Article1">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Article1" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Article_Topic" Association="Self.FK_Article_Topic">
+            <End Role="Chapter" EntitySet="Chapters" />
+            <End Role="Article" EntitySet="Articles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticleMistake_Article" Association="Self.FK_ArticleMistake_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="ArticleMistake" EntitySet="ArticleMistakes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookmark_Article" Association="Self.FK_Bookmark_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Bookmark" EntitySet="Bookmarks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Article" Association="Self.FK_Comment_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LinksToDisplay_Article" Association="Self.FK_LinksToDisplay_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="LinksToDisplay" EntitySet="LinksToDisplays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MCQ_Article" Association="Self.FK_MCQ_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="MCQ" EntitySet="MCQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_Article" Association="Self.FK_Rating_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchedReference_Article" Association="Self.FK_WatchedReference_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="WatchedReference" EntitySet="WatchedReferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WatchedReference_Article1" Association="Self.FK_WatchedReference_Article1">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="WatchedReference" EntitySet="WatchedReferences" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_Article" Association="Self.FK_WishList_Article">
+            <End Role="Article" EntitySet="Articles" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyAgainstMistake_ArticleMistake" Association="Self.FK_ReplyAgainstMistake_ArticleMistake">
+            <End Role="ArticleMistake" EntitySet="ArticleMistakes" />
+            <End Role="ReplyAgainstMistake" EntitySet="ReplyAgainstMistakes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Chapter_Subject" Association="Self.FK_Chapter_Subject">
+            <End Role="Subject" EntitySet="Subjects" />
+            <End Role="Book" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Topic_Chapter" Association="Self.FK_Topic_Chapter">
+            <End Role="Book" EntitySet="Books" />
+            <End Role="Chapter" EntitySet="Chapters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bookmark_User" Association="Self.FK_Bookmark_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Bookmark" EntitySet="Bookmarks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LinksToDisplay_Chapter" Association="Self.FK_LinksToDisplay_Chapter">
+            <End Role="Chapter" EntitySet="Chapters" />
+            <End Role="LinksToDisplay" EntitySet="LinksToDisplays" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Choice_Question" Association="Self.FK_Choice_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="Choice" EntitySet="Choices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_Choice" Association="Self.FK_Question_Choice">
+            <End Role="Choice" EntitySet="Choices" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_Comment" Association="Self.FK_Comment_Comment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Comment1" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_User" Association="Self.FK_Comment_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Question_MCQ" Association="Self.FK_Question_MCQ">
+            <End Role="MCQ" EntitySet="MCQs" />
+            <End Role="Question" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateMCQ_MCQ" Association="Self.FK_RateMCQ_MCQ">
+            <End Role="MCQ" EntitySet="MCQs" />
+            <End Role="RateMCQ" EntitySet="RateMCQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MistakeQuestion_Question" Association="Self.FK_MistakeQuestion_Question">
+            <End Role="Question" EntitySet="Questions" />
+            <End Role="MistakeQuestion" EntitySet="MistakeQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MistakeQuestion_User" Association="Self.FK_MistakeQuestion_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="MistakeQuestion" EntitySet="MistakeQuestions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Payment_PaymentMethod" Association="Self.FK_Payment_PaymentMethod">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Student_Person" Association="Self.FK_Student_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Student" EntitySet="Students" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Teacher_Person" Association="Self.FK_Teacher_Person">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Teacher" EntitySet="Teachers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateMCQ_User" Association="Self.FK_RateMCQ_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="RateMCQ" EntitySet="RateMCQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RateMCQ_User1" Association="Self.FK_RateMCQ_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="RateMCQ" EntitySet="RateMCQs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rating_User" Association="Self.FK_Rating_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Rating" EntitySet="Ratings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReplyAgainstMistake_ReplyAgainstMistake" Association="Self.FK_ReplyAgainstMistake_ReplyAgainstMistake">
+            <End Role="ReplyAgainstMistake" EntitySet="ReplyAgainstMistakes" />
+            <End Role="ReplyAgainstMistake1" EntitySet="ReplyAgainstMistakes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserRole" Association="Self.FK_User_UserRole">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WishList_User" Association="Self.FK_WishList_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="WishList" EntitySet="WishLists" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="UGEModelStoreContainer" CdmEntityContainer="UGEContext">
+          <EntitySetMapping Name="AdvertiseEntries">
+            <EntityTypeMapping TypeName="UGEModel.AdvertiseEntry">
+              <MappingFragment StoreEntitySet="AdvertiseEntry">
+                <ScalarProperty Name="AdvertiseEntryID" ColumnName="AdvertiseEntryID" />
+                <ScalarProperty Name="AdvertiseName" ColumnName="AdvertiseName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IsPublishedDateOver" ColumnName="IsPublishedDateOver" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="OfferToPayFor" ColumnName="OfferToPayFor" />
+                <ScalarProperty Name="IsAccepted" ColumnName="IsAccepted" />
+                <ScalarProperty Name="AdvertisePlacedByUserID" ColumnName="AdvertisePlacedByUserID" />
+                <ScalarProperty Name="AcceptedByUserID" ColumnName="AcceptedByUserID" />
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="IsPaymentSuccessful" ColumnName="IsPaymentSuccessful" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Articles">
+            <EntityTypeMapping TypeName="UGEModel.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="ArticleName" ColumnName="ArticleName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PreviousArticleID" ColumnName="PreviousArticleID" />
+                <ScalarProperty Name="NextArticleID" ColumnName="NextArticleID" />
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="VideoEmbedLink" ColumnName="VideoEmbedLink" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="AvgRating" ColumnName="AvgRating" />
+                <ScalarProperty Name="VideoLink" ColumnName="VideoLink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticleMistakes">
+            <EntityTypeMapping TypeName="UGEModel.ArticleMistake">
+              <MappingFragment StoreEntitySet="ArticleMistake">
+                <ScalarProperty Name="ArticleMistakeID" ColumnName="ArticleMistakeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="SubmitedDated" ColumnName="SubmitedDated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="UGEModel.Book">
+              <MappingFragment StoreEntitySet="Book">
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="BookName" ColumnName="BookName" />
+                <ScalarProperty Name="NewField" ColumnName="NewField" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bookmarks">
+            <EntityTypeMapping TypeName="UGEModel.Bookmark">
+              <MappingFragment StoreEntitySet="Bookmark">
+                <ScalarProperty Name="BookmarkID" ColumnName="BookmarkID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Chapters">
+            <EntityTypeMapping TypeName="UGEModel.Chapter">
+              <MappingFragment StoreEntitySet="Chapter">
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+                <ScalarProperty Name="BookID" ColumnName="BookID" />
+                <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+                <ScalarProperty Name="TotalArticles" ColumnName="TotalArticles" />
+                <ScalarProperty Name="MasterArticleID" ColumnName="MasterArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Choices">
+            <EntityTypeMapping TypeName="UGEModel.Choice">
+              <MappingFragment StoreEntitySet="Choice">
+                <ScalarProperty Name="ChoiceID" ColumnName="ChoiceID" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="ChoiceDisplay" ColumnName="ChoiceDisplay" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="UGEModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="CommentID" ColumnName="CommentID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CommentsAboutArticle" ColumnName="CommentsAboutArticle" />
+                <ScalarProperty Name="ReplyCommentID" ColumnName="ReplyCommentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Links">
+            <EntityTypeMapping TypeName="UGEModel.Link">
+              <MappingFragment StoreEntitySet="Link">
+                <ScalarProperty Name="LinkID" ColumnName="LinkID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="AdvertiseEntryID" ColumnName="AdvertiseEntryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinksToDisplays">
+            <EntityTypeMapping TypeName="UGEModel.LinksToDisplay">
+              <MappingFragment StoreEntitySet="LinksToDisplay">
+                <ScalarProperty Name="LinksToDisplayID" ColumnName="LinksToDisplayID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="ChapterID" ColumnName="ChapterID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MCQs">
+            <EntityTypeMapping TypeName="UGEModel.MCQ">
+              <MappingFragment StoreEntitySet="MCQ">
+                <ScalarProperty Name="MCQID" ColumnName="MCQID" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DisplayQuestion" ColumnName="DisplayQuestion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MistakeQuestions">
+            <EntityTypeMapping TypeName="UGEModel.MistakeQuestion">
+              <MappingFragment StoreEntitySet="MistakeQuestion">
+                <ScalarProperty Name="MistakeQuestionID" ColumnName="MistakeQuestionID" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="SendByUserID" ColumnName="SendByUserID" />
+                <ScalarProperty Name="IsErrorFixed" ColumnName="IsErrorFixed" />
+                <ScalarProperty Name="IsReceived" ColumnName="IsReceived" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Payments">
+            <EntityTypeMapping TypeName="UGEModel.Payment">
+              <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="AdditionalInformation" ColumnName="AdditionalInformation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="UGEModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="PaymentMethodID" ColumnName="PaymentMethodID" />
+                <ScalarProperty Name="NameOfMethod" ColumnName="NameOfMethod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="UGEModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="UGEModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+                <ScalarProperty Name="Hint" ColumnName="Hint" />
+                <ScalarProperty Name="AnswerChoiceID" ColumnName="AnswerChoiceID" />
+                <ScalarProperty Name="QuestionDisplay" ColumnName="QuestionDisplay" />
+                <ScalarProperty Name="MCQID" ColumnName="MCQID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RateMCQs">
+            <EntityTypeMapping TypeName="UGEModel.RateMCQ">
+              <MappingFragment StoreEntitySet="RateMCQ">
+                <ScalarProperty Name="RateMCQID" ColumnName="RateMCQID" />
+                <ScalarProperty Name="MCQID" ColumnName="MCQID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ratings">
+            <EntityTypeMapping TypeName="UGEModel.Rating">
+              <MappingFragment StoreEntitySet="Rating">
+                <ScalarProperty Name="RatingID" ColumnName="RatingID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="VideoQualtiy" ColumnName="VideoQualtiy" />
+                <ScalarProperty Name="TechingTechnique" ColumnName="TechingTechnique" />
+                <ScalarProperty Name="Mateials" ColumnName="Mateials" />
+                <ScalarProperty Name="AvgRating" ColumnName="AvgRating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReplyAgainstMistakes">
+            <EntityTypeMapping TypeName="UGEModel.ReplyAgainstMistake">
+              <MappingFragment StoreEntitySet="ReplyAgainstMistake">
+                <ScalarProperty Name="ReplyAgainstMistakeID" ColumnName="ReplyAgainstMistakeID" />
+                <ScalarProperty Name="ArticleMistakeID" ColumnName="ArticleMistakeID" />
+                <ScalarProperty Name="RepliedByWhomID" ColumnName="RepliedByWhomID" />
+                <ScalarProperty Name="Reply" ColumnName="Reply" />
+                <ScalarProperty Name="LinkedReplyMistakeID" ColumnName="LinkedReplyMistakeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="UGEModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="Grades" ColumnName="Grades" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="UGEModel.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="UGEModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="UGEModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+                <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+                <ScalarProperty Name="TeachingAbility" ColumnName="TeachingAbility" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="UGEModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="AccountID" ColumnName="AccountID" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="UGEModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="PriorityRole" ColumnName="PriorityRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WatchedReferences">
+            <EntityTypeMapping TypeName="UGEModel.WatchedReference">
+              <MappingFragment StoreEntitySet="WatchedReference">
+                <ScalarProperty Name="WatchedReferenceID" ColumnName="WatchedReferenceID" />
+                <ScalarProperty Name="WhichFromArticleID" ColumnName="WhichFromArticleID" />
+                <ScalarProperty Name="WhichToArticleID" ColumnName="WhichToArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WishLists">
+            <EntityTypeMapping TypeName="UGEModel.WishList">
+              <MappingFragment StoreEntitySet="WishList">
+                <ScalarProperty Name="WishListID" ColumnName="WishListID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="Dated" ColumnName="Dated" />
+                <ScalarProperty Name="LastNotified" ColumnName="LastNotified" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="ProcessDependentTemplatesOnSave" Value="False" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
