@@ -27,7 +27,7 @@ namespace UGE
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Content/CustomCSS.css"                      
+                      "~/Content/CustomCSS.css"
                       ));
 
             // Set EnableOptimizations to false for debugging. For more information,

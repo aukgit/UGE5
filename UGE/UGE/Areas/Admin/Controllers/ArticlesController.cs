@@ -41,6 +41,7 @@ namespace UGE.Areas.Admin.Controllers
             ViewBag.PreviousArticleID = new SelectList(db.Articles, "ArticleID", "ArticleName");
             ViewBag.NextArticleID = new SelectList(db.Articles, "ArticleID", "ArticleName");
             ViewBag.ChapterID = new SelectList(db.Chapters, "ChapterID", "TopicName");
+            ViewBag.DisplayIn = new SelectList(db.Chapters, "ChapterID", "TopicName");
             return View();
         }
 
@@ -54,7 +55,7 @@ namespace UGE.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.DisplayIn = new SelectList(db.Chapters, "ChapterID", "TopicName");
             ViewBag.PreviousArticleID = new SelectList(db.Articles, "ArticleID", "ArticleName", article.PreviousArticleID);
             ViewBag.NextArticleID = new SelectList(db.Articles, "ArticleID", "ArticleName", article.NextArticleID);
             ViewBag.ChapterID = new SelectList(db.Chapters, "ChapterID", "TopicName", article.ChapterID);
@@ -90,6 +91,8 @@ namespace UGE.Areas.Admin.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
+            ViewBag.DisplayIn = new SelectList(db.Chapters, "ChapterID", "TopicName");
+
             ViewBag.PreviousArticleID = new SelectList(db.Articles, "ArticleID", "ArticleName", article.PreviousArticleID);
             ViewBag.NextArticleID = new SelectList(db.Articles, "ArticleID", "ArticleName", article.NextArticleID);
             ViewBag.ChapterID = new SelectList(db.Chapters, "ChapterID", "TopicName", article.ChapterID);

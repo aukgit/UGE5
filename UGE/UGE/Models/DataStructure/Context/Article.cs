@@ -44,6 +44,10 @@ namespace UGE.Models.DataStructure
         [Required]
         [DefaultValue(true)]
         public bool IsCommentsEnabled { get; set; }
+
+        //Links to display, custom added
+        [DisplayName("Show in Chapter")]
+        public int DisplayIn { get; set; }
     
         public virtual ICollection<Article> Article1 { get; set; }
         public virtual Article Article2 { get; set; }
