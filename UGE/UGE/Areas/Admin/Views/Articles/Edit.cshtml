@@ -29,3 +29,15 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+
+<script src="~/Scripts/bootstrap-slider.js"></script>
+
+<script>
+
+    $('#ex1').slider({
+        formater: function (value) {
+            return 'Current value: ' + value;
+        }
+    });
+</script>

@@ -274,12 +274,14 @@
     <Content Include="App_Data\UGE_log.ldf">
       <DependentUpon>UGE.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap-slider.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-slider.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\DataStructure\UGEModel.edmx">
@@ -336,6 +338,7 @@
     <Content Include="Areas\Admin\Views\Articles\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Articles\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\_Modify.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
