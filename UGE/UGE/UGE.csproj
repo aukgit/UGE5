@@ -218,9 +218,6 @@
     <Compile Include="Models\DataStructure\Context\PaymentMethod.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\DataStructure\Context\Person.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Models\DataStructure\Context\Question.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -233,16 +230,8 @@
     <Compile Include="Models\DataStructure\Context\ReplyAgainstMistake.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\DataStructure\Context\Student.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models\DataStructure\Context\Subject.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Models\DataStructure\Context\Subject.cs" />
     <Compile Include="Models\DataStructure\Context\sysdiagram.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models\DataStructure\Context\Teacher.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\DataStructure\Context\UGEContext.cs">
@@ -274,12 +263,15 @@
     <Content Include="App_Data\UGE_log.ldf">
       <DependentUpon>UGE.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\bootstrap-slider.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CustomCSS.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap-slider.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\DataStructure\UGEModel.edmx">
@@ -336,7 +328,9 @@
     <Content Include="Areas\Admin\Views\Articles\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Articles\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Articles\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Articles\_Modify.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\CustomJavaScript.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
